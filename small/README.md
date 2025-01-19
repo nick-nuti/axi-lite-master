@@ -12,6 +12,7 @@ Regarding input parameters:
 
 Hardware sizes:
 -----
+(NOTE: sizes are with 64 bit data size and 32 bit address size)
 - if FLOP_READ_DATA=0 and USER_START_HAS_PULSE_CONTROL=0 then pre-optimization synthesis in vivado shows LUT: 144 and FF: 7
 - if FLOP_READ_DATA=0 and USER_START_HAS_PULSE_CONTROL=1 then pre-optimization synthesis in vivado shows LUT: 142 and FF: 4
 - if FLOP_READ_DATA=1 and USER_START_HAS_PULSE_CONTROL=0 then pre-optimization synthesis in vivado shows LUT: 112 and FF: 72
