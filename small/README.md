@@ -2,6 +2,9 @@ Small AXI-LITE master IP design (almost everything is combinational; typically w
 
 ![image](https://github.com/user-attachments/assets/f8d0709c-54a5-42de-836b-10a0bca1a561)
 
+![image](https://github.com/user-attachments/assets/365ea98f-4033-4f1c-bb52-87aea33c54c5)
+
+
 Regarding input parameters:
 -----
 - FLOP_READ_DATA : allows the developer to choose whether or not to flop READ data out and READ data out enable
