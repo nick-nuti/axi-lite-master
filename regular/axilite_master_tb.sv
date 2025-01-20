@@ -241,7 +241,6 @@ begin
             strb_val = (strb_val << 8) | ((w_strb[cmp_it][y]) ? 8'hFF : 8'h0);
         end
         
-        current_addr = current_addr + ((`DATA_W)*i);
         strb_data_in = u_data_in[cmp_it] & strb_val;
         strb_data_out = u_data_out[cmp_it] & strb_val;
         cmp_data_diff = (strb_data_in) ^ (strb_data_out);
