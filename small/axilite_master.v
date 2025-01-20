@@ -233,16 +233,27 @@ module axilite_master #(
         begin
             always @ (posedge aclk)
             begin
-                if((axi_cs==IDLE) && (axi_ns!=READ_RESPONSE))
+                if((axi_cs==IDLE) && (axi_ns!=IDLE))
                 begin
                     user_data_out     <= 0;
                     user_data_out_en  <= 0;
+
+                    user_status       <= 0;
+                end
+
+                else if(axi_cs==WRITE_RESPONSE)
+                begin
+                    user_data_out_en <= m_axi_bvalid;
+
+                    user_status <= m_axi_bresp;
                 end
                 
                 else if(axi_cs==READ_RESPONSE)
                 begin
                     user_data_out     <= m_axi_rdata;
                     user_data_out_en  <= m_axi_rvalid;
+
+                    user_status       <= m_axi_rresp;
                 end
             end
         end
@@ -253,29 +264,11 @@ module axilite_master #(
             begin
                 user_data_out     <= (axi_cs==READ_RESPONSE) ? m_axi_rdata : 0;
                 user_data_out_en  <= (axi_cs==READ_RESPONSE) ? m_axi_rvalid : 0;
+
+                user_status       <= (m_axi_bvalid) ? m_axi_bresp : ((m_axi_rvalid) ? m_axi_rresp : 0);
             end
         end
     endgenerate
-
-// STATUS   ---------------------------------------------------
-    always @ (posedge aclk)
-    begin
-
-        if(((axi_cs == WRITE_RESPONSE)&& m_axi_bvalid))
-        begin
-            user_status <= m_axi_bresp;
-        end
-
-        else if(((axi_cs == READ_RESPONSE)&& m_axi_rvalid))
-        begin
-            user_status <= m_axi_rresp;
-        end
-        
-        else
-        begin
-            user_status <= 'h0;
-        end
-    end
 
     always @ (*)
     begin
