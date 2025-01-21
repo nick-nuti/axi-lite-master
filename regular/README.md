@@ -2,7 +2,7 @@ Regular AXI-LITE master IP design (more-stable than "small" design because ports
 
 ![image](https://github.com/user-attachments/assets/c581ea2f-407d-4c70-865c-642a5cfdf733)
 
-![image](https://github.com/user-attachments/assets/6932f01d-80c4-4f51-b386-77433f58ed00)
+![image](https://github.com/user-attachments/assets/971f9df2-784c-47b9-a4d3-fcac47448286)
 
 
 NOTE:
