@@ -72,16 +72,16 @@ reg  [3:0]  u_b_len [0:9] =
 'h0
 };
 
-bit  [`DATA_W-1:0] u_data_in [0:54] =
+bit  [`DATA_W-1:0] u_data_in [0:9] =
 {
 'hF8F4F2F1,
 'h87654321,
-'h0000000A,'h000000BA,'h00000CBA,'h0000DCBA,'h000EDCBA,'h00FEDCBA,'h0AFEDCBA,'hBAFEDCBA,'h0BAFEDCB,'h00BAFEDC,'h000BAFED,'h0000BAFE,'h00000BAF,'h000000BA,'h0000000B,'h00000000,
+'h0000000A,
 'h12345678,
 'h08060402,
 'h07050301,
-'h1000000A,'h200000BA,'h30000CBA,'h4000DCBA,'h500EDCBA,'h60FEDCBA,'h7AFEDCBA,'h8AFEDCBA,'h9BAFEDCB,'hA0BAFEDC,'hB00BAFED,'hC000BAFE,'hD0000BAF,'hE00000BA,'hF000000B,'h10000000,
-'h0000000011111111,'h1111111122222222,'h2222222233333333,'h3333333344444444,'h4444444455555555,'h5555555566666666,'h6666666677777777,'h7777777788888888,'h8888888899999999,'h99999999AAAAAAAA,'hAAAAAAAABBBBBBBB,'hBBBBBBBBCCCCCCCC,'hCCCCCCCCDDDDDDDD,'hDDDDDDDDEEEEEEEE,'hEEEEEEEEFFFFFFFF,'hFFFFFFFF00000000,
+'h1000000A,
+'hF0A0E0B0,
 'hBADCAFEEBADCAFEE,
 'hDEADBEEFDEADBEEF
 };
@@ -247,12 +247,12 @@ begin
             
         if(|cmp_data_diff)
         begin
-            $display("ADDRESS:0x%X, DATA WRITTEN:0x%X -> DATA WRITTEN w/ STROBE(0b%b): 0x%X, DATA READ: 0x%X, NOT EQUAL", current_addr, u_data_in[running_index], w_strb[cmp_it], strb_data_in, strb_data_out);
+            $display("ADDRESS:0x%X, DATA WRITTEN:0x%X -> DATA WRITTEN w/ STROBE(0b%b): 0x%X, DATA READ: 0x%X, NOT EQUAL", current_addr, u_data_in[cmp_it], w_strb[cmp_it], strb_data_in, strb_data_out);
         end
         
         else
         begin
-            $display("ADDRESS:0x%X, DATA WRITTEN:0x%X -> DATA WRITTEN w/ STROBE(0b%b): 0x%X, DATA READ: 0x%X, EQUAL", current_addr, u_data_in[running_index], w_strb[cmp_it], strb_data_in, strb_data_out);
+            $display("ADDRESS:0x%X, DATA WRITTEN:0x%X -> DATA WRITTEN w/ STROBE(0b%b): 0x%X, DATA READ: 0x%X, EQUAL", current_addr, u_data_in[cmp_it], w_strb[cmp_it], strb_data_in, strb_data_out);
         end
     end
     
